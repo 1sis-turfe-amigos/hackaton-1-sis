@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turfe</title>
+    <link rel="stylesheet" href="style (1).css">
+</head>
+
+<body>
+
+    <h1>Turfe amigo</h1>
+
+    <button onclick="Volta()">Realizar voltas</button>
+
+    <div id="div_msg"></div>
+
+</body>
+
+</html>
+
+<script>
+    let vt_cavalos = ['Cavalo 1', 'Cavalo 2', 'Cavalo 3', 'Cavalo 4', 'Cavalo 5']
+
+    function Volta() {
+        let divMsg = document.getElementById('div_msg');
+        divMsg.style.display = 'block';
+        divMsg.innerHTML = '';
+
+        let total = [0, 0, 0, 0, 0];
+
+        for (var volta = 1; volta <= 7; volta++) {
+            let conteudoVolta = `<div class="volta-box">`;
+            conteudoVolta += `<div class="volta-titulo">Volta ${volta}</div>`;
+            conteudoVolta += `<div class="cavalos-area">`;
+
+            for (var i = 0; i < vt_cavalos.length; i++) {
+                var tempo = Number((Math.random() * 2 + 7).toFixed(1));
+                total[i] += tempo;
+
+                conteudoVolta += `
+                    <div class="cavalo-card">
+                        <div class="cavalo-topo">${vt_cavalos[i]}</div>
+                        <div class="cavalo-info">
+                            Tempo: <span class="tempo">${tempo}s</span><br>
+                            Acumulado: <span class="acumulado">${total[i].toFixed(1)}s</span>
+                        </div>
+                    </div>
+                `;
+            }
+            conteudoVolta += `</div></div>`;
+            divMsg.innerHTML += conteudoVolta;
+        }
+
+        let menorTempo = total[0];
+        let medioTempo = total[1];
+        let maiorTempo = total[2];
+
+        let campeao = vt_cavalos[0];
+        let segundo = vt_cavalos[1];
+        let terceiro = vt_cavalos[2];
+
+        for (let index = 0; index < total.length; index++) {
+            if (total[index] < menorTempo) {
+                maiorTempo = medioTempo;
+                terceiro = segundo;
+
+                medioTempo = menorTempo;
+                segundo = campeao;
+
+                menorTempo = total[index];
+                campeao = vt_cavalos[index];
+            }
+            else if (total[index] < medioTempo && total[index] > menorTempo) {
+                maiorTempo = medioTempo;
+                terceiro = segundo;
+
+                medioTempo = total[index];
+                segundo = vt_cavalos[index];
+            }
+            else if (total[index] < maiorTempo && total[index] > medioTempo) {
+                maiorTempo = total[index];
+                terceiro = vt_cavalos[index];
+            }
+        }
+
+        divMsg.innerHTML += `
+            <div class="resultado-final">
+                <h2>Resultado final</h2>
+                <div class="podio">
+                    <div class="podio-card primeiro">
+                        <div class="podio-topo">1º Lugar</div>
+                        <div class="podio-corpo">
+                            <div class="nome-campeao">${campeao}</div>
+                            <div class="tempo-final">${menorTempo.toFixed(1)}s</div>
+                        </div>
+                        <div class="base-podio"></div>
+                    </div>
+                    <div class="podio-card segundo">
+                        <div class="podio-topo">2º Lugar</div>
+                        <div class="podio-corpo">
+                            <div class="nome-campeao">${segundo}</div>
+                            <div class="tempo-final">${medioTempo.toFixed(1)}s</div>
+                        </div>
+                        <div class="base-podio"></div>
+                    </div>
+                    <div class="podio-card terceiro">
+                        <div class="podio-topo">3º Lugar</div>
+                        <div class="podio-corpo">
+                            <div class="nome-campeao">${terceiro}</div>
+                            <div class="tempo-final">${maiorTempo.toFixed(1)}s</div>
+                        </div>
+                        <div class="base-podio"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+</script>

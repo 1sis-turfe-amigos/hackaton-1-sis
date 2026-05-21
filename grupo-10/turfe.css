@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --verde-gramado:    #2d6a3f;
+    --verde-escuro:     #1a3d25;
+    --verde-claro:      #4a9c5e;
+    --terra:            #8b5e3c;
+    --terra-clara:      #c4946a;
+    --ouro:             #c9952a;
+    --ouro-claro:       #f0c050;
+    --creme:            #f5edd8;
+    --creme-escuro:     #e8d5b0;
+    --marrom-escuro:    #2c1a0e;
+    --texto-principal:  #1e120a;
+    --texto-secundario: #5a3a1a;
+    --branco-sujo:      #faf6ed;
+    --sombra:           rgba(44, 26, 14, 0.25);
+}
+
+body {
+    background-color: var(--verde-escuro);
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 60px,
+            rgba(255,255,255,0.015) 60px,
+            rgba(255,255,255,0.015) 61px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 60px,
+            rgba(255,255,255,0.015) 60px,
+            rgba(255,255,255,0.015) 61px
+        );
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem 1rem 4rem;
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--creme);
+}
+
+/* ── Cabeçalho da página ── */
+body::before {
+    content: '🏇 TURFE AMIGO 🏇';
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--ouro-claro);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+
+body::after {
+    content: '⸺  Hipódromo Digital  ⸺';
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--terra-clara);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+/* ── Botão Volta ── */
+button {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--marrom-escuro);
+    background: linear-gradient(135deg, var(--ouro-claro) 0%, var(--ouro) 60%, #a07018 100%);
+    border: none;
+    border-radius: 4px;
+    padding: 0.65rem 2.2rem;
+    cursor: pointer;
+    box-shadow:
+        0 4px 12px var(--sombra),
+        inset 0 1px 0 rgba(255,255,255,0.35),
+        inset 0 -2px 0 rgba(0,0,0,0.2);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+button::before {
+    content: '▶';
+    margin-right: 0.5rem;
+    font-size: 0.7rem;
+    vertical-align: middle;
+}
+
+button:hover {
+    filter: brightness(1.1);
+    box-shadow:
+        0 6px 18px var(--sombra),
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 2px 6px var(--sombra),
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+
+/* ── Painel de resultados ── */
+#msg_tela {
+    background-color: var(--branco-sujo);
+    color: var(--texto-principal);
+    border: 3px solid var(--ouro);
+    border-radius: 6px;
+    box-shadow:
+        0 0 0 6px var(--verde-escuro),
+        0 0 0 8px var(--ouro),
+        0 12px 40px rgba(0,0,0,0.5);
+    min-width: 360px;
+    max-width: 680px;
+    width: 100%;
+    padding: 1.5rem 2rem 2rem;
+    font-size: 0.95rem;
+    line-height: 2;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Marca d'água decorativa */
+#msg_tela::before {
+    content: '🏇';
+    position: absolute;
+    font-size: 9rem;
+    opacity: 0.04;
+    bottom: -1.5rem;
+    right: -0.5rem;
+    pointer-events: none;
+    line-height: 1;
+}
+
+/* Faixa de título interna */
+#msg_tela::after {
+    content: 'RESULTADOS DA CORRIDA';
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    border-bottom: 1.5px solid var(--creme-escuro);
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Entradas de volta */
+#msg_tela br + br {
+    display: none;
+}
+
+/* Estilo para os textos injetados via innerHTML */
+/* "Volta N" – aparece como bloco de seção */
+#msg_tela {
+    /* Override dos <br> para simular blocos visuais é limitado sem JS,
+       mas garantimos espaçamento e fonte adequada para o texto inline */
+    word-spacing: 0.05em;
+}
+
+/* Scrollbar personalizada */
+#msg_tela::-webkit-scrollbar {
+    width: 6px;
+}
+#msg_tela::-webkit-scrollbar-track {
+    background: var(--creme-escuro);
+}
+#msg_tela::-webkit-scrollbar-thumb {
+    background: var(--ouro);
+    border-radius: 3px;
+}
+
+/* ── Responsividade ── */
+@media (max-width: 480px) {
+    body::before {
+        font-size: 1.4rem;
+    }
+
+    #msg_tela {
+        min-width: unset;
+        padding: 1rem 1.2rem 1.5rem;
+        font-size: 0.88rem;
+    }
+
+    button {
+        font-size: 0.82rem;
+        padding: 0.55rem 1.5rem;
+    }
+}
+
+.volta-titulo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--ouro);
+    margin: 1.2rem 0 0.3rem;
+    border-bottom: 1px solid var(--creme-escuro);
+    padding-bottom: 0.2rem;
+}
+
+.linha-cavalo {
+    padding: 0.15rem 0.5rem;
+    color: var(--texto-secundario);
+}
+
+.fim-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    background: var(--ouro-claro);
+    text-align: center;
+    padding: 0.6rem;
+    margin: 1.5rem 0 0.8rem;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+}
+
+.podio {
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    color: var(--texto-principal);
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+}

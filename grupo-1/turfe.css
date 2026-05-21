@@ -1,0 +1,110 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #f4eeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.turfe {
+    margin: 100px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 1.2rem;
+    background-color: #fff;
+    border-radius: 15px;
+    width: 65%;
+    /* min-height: 600px; */
+    box-shadow: 1px 3px 30px 3px #2f3d7c9f;
+}
+
+.ttl-turfe {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #07175e;
+}
+
+.img-turf {
+    width: 60%;
+    margin: 0 auto 12px;
+}
+
+.btn-turf {
+    width: 30%;
+    padding: 15px 12px;
+    border-radius: 12px;
+    border: none;
+    margin: auto;
+    background-color: #4483B9;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+    transition: .8s;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.btn-turf:hover {
+    background-color: #325e85;
+    transform: scale(1.03);
+}
+
+#container{
+    padding: 20px 0px;
+    width: 100%;
+    border-top: 2px solid #325e85;
+    
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.card{
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #325e85;
+    transition: all 0.5s ease-in-out;
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* justify-content: space-evenly; */
+    font-weight: 900;
+    text-align: center;
+    padding: .2rem .5rem;
+}
+
+.card:hover{
+    transform: scale(1.03);
+}
+
+#venc1{
+    background-color: #6abce5;
+}
+
+#venc2{
+    background-color: #4483B9;
+}
+
+#venc3{
+    background-color: #325e85;
+}
+
+#divOutput{
+    border-top: 2px solid #325e85;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.cavalo{
+    font-size: 2rem;
+    font-weight: 400;
+}

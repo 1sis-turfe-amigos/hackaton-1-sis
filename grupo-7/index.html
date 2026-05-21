@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagens/turfe.jpg">
+
+    <title>Turfe - 7 Voltas</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <h1>🏇 Corrida de Turfe - 7 Voltas</h1>
+
+        <h2 id="tituloVolta">
+            Volta 0 / 7
+        </h2>
+
+        <div class="botoes">
+
+            <button onclick="volta()" id="btnIniciar">
+                Iniciar Volta
+            </button>
+
+            <button onclick="reiniciar()">
+                Reiniciar
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Cavalo</th>
+                    <th>V1</th>
+                    <th>V2</th>
+                    <th>V3</th>
+                    <th>V4</th>
+                    <th>V5</th>
+                    <th>V6</th>
+                    <th>V7</th>
+                    <th>Tempo Total</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="corpoTabela">
+
+            </tbody>
+
+        </table>
+
+        <div id="podio">
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

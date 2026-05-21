@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-main: #0a180e;
+  --bg-container: #fcfbfa;
+  --bg-card: #f5f0e1;
+  --accent-gold: #b29451;
+  --text-dark: #1a1512;
+  --text-muted: #665f58;
+  --border-color: rgba(0, 0, 0, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-main);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 80px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+button {
+  display: block;
+  margin: 0 auto 60px;
+  padding: 18px 48px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: var(--accent-gold);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #9e8142;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#div_msg {
+  display: none;
+  max-width: 1040px;
+  margin: auto;
+  background-color: var(--bg-container);
+  border-radius: 4px;
+  padding: 50px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.volta-box {
+  margin-bottom: 45px;
+  background: #ffffff;
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+}
+
+.volta-titulo {
+  padding: 20px 24px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bg-main);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cavalos-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 20px;
+  padding: 24px;
+}
+
+.cavalo-card {
+  background-color: var(--bg-card);
+  border-radius: 2px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.cavalo-topo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bg-main);
+  margin-bottom: 14px;
+}
+
+.cavalo-info {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.tempo { 
+  color: #1b5e20; 
+  font-weight: 700; 
+}
+
+.acumulado { 
+  color: #0d47a1; 
+  font-weight: 700; 
+}
+
+.resultado-final {
+  margin-top: 60px;
+  padding-top: 50px;
+  border-top: 1px solid var(--border-color);
+}
+
+.resultado-final h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: var(--bg-main);
+  margin-bottom: 50px;
+}
+
+.podio {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.podio-card {
+  width: 250px;
+  background: #ffffff;
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.primeiro { 
+  order: 2; 
+  transform: scale(1.03); 
+  border-color: var(--accent-gold);
+}
+.segundo  { order: 1; }
+.terceiro { order: 3; }
+
+.podio-topo {
+  padding: 16px;
+  text-align: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.primeiro .podio-topo { background-color: #fcf8ee; color: #735613; }
+.segundo .podio-topo  { background-color: #f7f7f7; color: #444444; }
+.terceiro .podio-topo { background-color: #faf5f2; color: #7a482e; }
+
+.podio-corpo {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.nome-campeao {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bg-main);
+  margin-bottom: 8px;
+}
+
+.tempo-final {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.base-podio {
+  display: none;
+}

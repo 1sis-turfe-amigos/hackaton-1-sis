@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    background: linear-gradient(180deg, #1a3d2e, #10251c);
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+/* BOTÕES */
+
+button {
+    background: #ffd700;
+    color: #1a3d2e;
+    border: none;
+    padding: 12px 22px;
+    margin: 10px 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+button:hover:not(:disabled) {
+    background: #ffed4e;
+    transform: translateY(-5px);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* TABELA */
+
+table {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(15, 36, 25, 0.95);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+th {
+    background: #244d39;
+    color: #ffd700;
+    padding: 14px;
+    font-size: 17px;
+}
+
+td {
+    padding: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* ÁREA DO PÓDIO */
+
+.lista-podio {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 0;
+    list-style: none;
+}
+
+/* CADA POSIÇÃO DO PÓDIO */
+
+.item-podio {
+    background: rgba(15, 36, 25, 0.95);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-left: 6px solid #ffd700;
+    border-right: 6px solid #ffd700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.2s;
+}
+
+/* ANIMAÇÃO DO PÓDIO */
+
+.item-podio:hover {
+    transform: scale(1.10);
+}
