@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pura Sorte</title>
+</head>
+<body>
+    <h2>Pura Sorte</h2>
+<div>
+    <select id="ipt_cavalo">
+        <option value="0">Selecione...</option>
+        <option value="1">Cavalo 1</option>
+        <option value="2">Cavalo 2</option>
+        <option value="3">Cavalo 3</option>
+        <option value="4">Cavalo 4</option>
+        <option value="5">Cavalo 5</option>
+    </select>
+    <button onclick="selecionar()">Selecionar</button>
+</div> 
+
+<div>
+    <div id="div_fichas"></div>
+    Valor Apostado: 
+    <input id="ipt_valor" type="number">
+    <button onclick="apostar()">Apostar</button>
+</div>
+
+<div>
+    <button onclick="jogar()">Dar uma Volta</button>
+</div>
+
+
+
+    <div id="div_msg"></div>
+
+</body>
+<script src="scriptTurfe.js"></script>
+</html>

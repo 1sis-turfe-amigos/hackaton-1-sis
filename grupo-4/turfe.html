@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turfe</title>
+    <link rel="stylesheet" href="style-turfe.css">
+</head>
+
+<body>
+
+    <div class="logo">
+        <img src="./img/logo.png" alt="logo">
+    </div>
+
+    <button onclick="volta()" class="button-turfe">DAR VOLTA</button>
+
+    <div id="div_msg"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let acumulo1 = 0;
+    let acumulo2 = 0;
+    let acumulo3 = 0;
+    let acumulo4 = 0;
+    let acumulo5 = 0;
+
+    var cavalos = [
+        {
+            nome: 'Cavalo 1',
+            tempVoltas: []
+        },
+        {
+            nome: 'Cavalo 2',
+            tempVoltas: []
+        },
+        {
+            nome: 'Cavalo 3',
+            tempVoltas: []
+        },
+        {
+            nome: 'Cavalo 4',
+            tempVoltas: []
+        },
+        {
+            nome: 'Cavalo 5',
+            tempVoltas: []
+        }
+    ];
+
+    function volta() {
+        div_msg.innerHTML = '';
+        let voltas = 7;
+
+        let cav1 = cavalos[0];
+        let cav2 = cavalos[1];
+        let cav3 = cavalos[2];
+        let cav4 = cavalos[3];
+        let cav5 = cavalos[4];
+
+        // AQUI COMEÇA
+        let imagens = [
+            './img/cavalo (1).gif',
+            './img/cavalo (2).gif',
+            './img/cavalo (3).gif',
+            './img/cavalo (4).gif',
+            './img/cavalo-branco.gif'
+        ];
+
+        for (let i = 0; i < voltas; i++) {
+
+            let tempo1 = Number((Math.random() * (9 - 7) + 7).toFixed(1));
+            let tempo2 = Number((Math.random() * (9 - 7) + 7).toFixed(1));
+            let tempo3 = Number((Math.random() * (9 - 7) + 7).toFixed(1));
+            let tempo4 = Number((Math.random() * (9 - 7) + 7).toFixed(1));
+            let tempo5 = Number((Math.random() * (9 - 7) + 7).toFixed(1));
+
+            acumulo1 += tempo1;
+            acumulo2 += tempo2;
+            acumulo3 += tempo3;
+            acumulo4 += tempo4;
+            acumulo5 += tempo5;
+
+            cav1.tempVoltas.push(tempo1);
+            cav2.tempVoltas.push(tempo2);
+            cav3.tempVoltas.push(tempo3);
+            cav4.tempVoltas.push(tempo4);
+            cav5.tempVoltas.push(tempo5);
+
+            div_msg.innerHTML += `
+
+        <div class="volta-box">
+            <h2>Volta ${i + 1}</h2>
+
+            <div class="linha-cavalo">
+                <img src="${imagens[0]}">
+                <p><b>${cav1.nome}</b> - ${tempo1} min | Total: ${acumulo1.toFixed(1)} min</p>
+            </div>
+
+            <div class="linha-cavalo">
+                <img src="${imagens[1]}">
+                <p><b>${cav2.nome}</b> - ${tempo2} min | Total: ${acumulo2.toFixed(1)} min</p>
+            </div>
+
+            <div class="linha-cavalo">
+                <img src="${imagens[2]}">
+                <p><b>${cav3.nome}</b> - ${tempo3} min | Total: ${acumulo3.toFixed(1)} min</p>
+            </div>
+
+            <div class="linha-cavalo">
+                <img src="${imagens[3]}">
+                <p><b>${cav4.nome}</b> - ${tempo4} min | Total: ${acumulo4.toFixed(1)} min</p>
+            </div>
+
+            <div class="linha-cavalo">
+                <img src="${imagens[4]}">
+                <p><b>${cav5.nome}</b> - ${tempo5} min | Total: ${acumulo5.toFixed(1)} min</p>
+            </div>
+            <hr>
+        </div>
+        `;
+        }
+
+        calcularRanking();
+    }
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("start") == "true") {
+
+        document.querySelector('.button-turfe').style.display = 'none';
+
+        let contagem = 3;
+
+        div_msg.innerHTML = `<h1>${contagem}</h1>`;
+
+        let intervalo = setInterval(() => {
+
+            contagem--;
+
+            if (contagem > 0) {
+                div_msg.innerHTML = `<h1>${contagem}</h1>`;
+            } else if (contagem == 0) {
+                div_msg.innerHTML = `<h1>VAI!</h1>`;
+            } else {
+                clearInterval(intervalo);
+                
+                div_msg.innerHTML = `
+                    <div class="gif-pista-container">
+                        <img src="./img/cavalos.gif" alt="Cavalos correndo" class="gif-pista">
+                    </div>
+                `;
+
+                let tempoDoGif = 3000; 
+                
+                setTimeout(() => {
+                    div_msg.innerHTML = '';
+                    volta();
+                }, tempoDoGif);
+            }
+        }, 1000);
+    }
+
+    function calcularRanking() {
+
+        let resultados = [{
+            nome: 'Cavalo 1',
+            total: acumulo1,
+            ultima: cavalos[0].tempVoltas[cavalos[0].tempVoltas.length - 1]
+        }, {
+            nome: 'Cavalo 2',
+            total: acumulo2,
+            ultima: cavalos[1].tempVoltas[cavalos[1].tempVoltas.length - 1]
+        }, {
+            nome: 'Cavalo 3',
+            total: acumulo3,
+            ultima: cavalos[2].tempVoltas[cavalos[2].tempVoltas.length - 1]
+        }, {
+            nome: 'Cavalo 4',
+            total: acumulo4,
+            ultima: cavalos[3].tempVoltas[cavalos[3].tempVoltas.length - 1]
+        }, {
+            nome: 'Cavalo 5',
+            total: acumulo5,
+            ultima: cavalos[4].tempVoltas[cavalos[4].tempVoltas.length - 1]
+        }];
+        console.log(resultados)
+        let ranking = [];
+        let usados = [];
+
+        // primerio 
+        let menor = resultados[0].total;
+        for (let i = 1; i < resultados.length; i++) {
+            if (resultados[i].total < menor) {
+                menor = resultados[i].total;
+            }
+        }
+        let primeiros = [];
+        for (let i = 0; i < resultados.length; i++) {
+            if (resultados[i].total == menor) {
+                primeiros.push(resultados[i].nome);
+                usados.push(i);
+            }
+        }
+        ranking.push({ posicao: "1º", cavalos: primeiros });
+
+        // segundo  
+        let menor2 = 0;
+        for (let i = 0; i < resultados.length; i++) {
+            if (!usados.includes(i)) {
+                if (menor2 == 0 || resultados[i].total < menor2) {
+                    menor2 = resultados[i].total;
+                }
+            }
+        }
+        let segundos = [];
+        for (let i = 0; i < resultados.length; i++) {
+            if (!usados.includes(i) && resultados[i].total == menor2) {
+                segundos.push(resultados[i].nome);
+                usados.push(i);
+            }
+        }
+        ranking.push({ posicao: "2º", cavalos: segundos });
+
+        // terceiro 
+        let menor3 = 0;
+        let indiceEscolhido = -1;
+        for (let i = 0; i < resultados.length; i++) {
+            if (!usados.includes(i)) {
+                if (menor3 == 0 || resultados[i].total < menor3) {
+                    menor3 = resultados[i].total;
+                    indiceEscolhido = i;
+                } else if (resultados[i].total == menor3) {
+                    // desempate ultima volta
+                    if (resultados[i].ultima < resultados[indiceEscolhido].ultima) {
+                        indiceEscolhido = i;
+                    }
+                }
+            }
+        }
+        ranking.push({ posicao: "3º", cavalos: [resultados[indiceEscolhido].nome] });
+
+
+        for (let i = 0; i < ranking.length; i++) {
+            div_msg.innerHTML += `<p>${ranking[i].posicao} lugar: ${ranking[i].cavalos} 
+            (${resultados.find(r => ranking[i].cavalos.includes(r.nome)).total.toFixed(1)} min)</p>`;
+        }
+
+    }
+
+</script>
